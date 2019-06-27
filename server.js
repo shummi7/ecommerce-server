@@ -11,13 +11,9 @@ app.use(cors());
 
 const postgres= knex({
     client: 'pg',
-    version: '7.2',
-    connection: {
-      host : '127.0.0.1',
-      user : 'postgres',
-      password : '0106',
-      database : 'ecommerce'
-    }
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+
   });
 
 
