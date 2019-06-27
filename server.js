@@ -62,7 +62,7 @@ app.post('/featuredproduct',(req,res)=>{
 })
 
 app.post('/cart',(req,res)=>{
-    console.log('checking',req.body.addtocart);
+    // console.log('checking',req.body.addtocart);
     postgres('users')
     .where('id','=', req.body.id).returning("*")
     .update({
@@ -70,7 +70,7 @@ app.post('/cart',(req,res)=>{
     })
     .then(data=>{
         res.json(data[0]);
-        console.log('data[0].cart',data[0].cart);
+        // console.log('data[0].cart',data[0].cart);
     })
 })
 
