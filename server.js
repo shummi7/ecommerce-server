@@ -29,7 +29,7 @@ app.post('/collection',(req,res)=>{
     )
 })
 
-app.post('/testing',(req,res)=>{
+app.get('/testing',(req,res)=>{
     postgres.select('*').from('dress')
     .then(data=>{
         // console.log(data);
