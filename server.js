@@ -29,6 +29,16 @@ app.post('/collection',(req,res)=>{
     )
 })
 
+app.post('/testing',(req,res)=>{
+    postgres.select('*').from('dress')
+    .then(data=>{
+        // console.log(data);
+        // console.log(req.body.collection);
+        res.json(data);
+    }
+    )
+})
+
 app.post('/product',(req,res)=>{
     postgres.select('*').from(req.body.producttable)
     .where({productcode:req.body.productcode})
