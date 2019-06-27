@@ -39,7 +39,7 @@ app.post('/product',(req,res)=>{
     .then(data=>{
         // console.log("heloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",data);
         res.json(data);
-        console.log(data);
+        // console.log(data);
     }
     )
 })
@@ -155,4 +155,4 @@ app.post('/register', (req,res) => {
 });
 
 
-app.listen(3001,()=>{console.log('port 3001 server listening');})
+app.listen(process.env.PORT || 3001,()=>{console.log('port 3001 server listening');})
