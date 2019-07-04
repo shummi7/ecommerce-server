@@ -17,6 +17,17 @@ const postgres= knex({
     }
   });
 
+//   const postgres= knex({
+//     client: 'pg',
+//     version: '7.2',
+//     connection: {
+//       host : '127.0.0.1',
+//       user : 'postgres',
+//       password : '0106',
+//       database : 'ecommerce'
+//     }
+//   });
+
 
 app.get('/',(req,res)=>{res.json('yaay It is working');})
 
@@ -49,6 +60,25 @@ app.post('/product',(req,res)=>{
         // console.log(data);
     }
     )
+})
+
+app.post('/newproduct',(req,res)=>{
+    const table=['dress','headphones','phones','watches'];
+    const product=['dress0006','headphones0005','phones0005','watches0005'];
+    const newproductarray=[]
+    for(var i=0;i<4;i++){
+    postgres.select('*').from(table[i])
+    .where({productcode:product[i]})
+    .then(data=>{
+        newproductarray.push(data[0]);
+    }
+    )
+    }
+
+    setTimeout(() => {
+        res.json(newproductarray);
+      }, 500)
+
 })
 
 app.post('/featuredproduct',(req,res)=>{
@@ -163,3 +193,5 @@ app.post('/register', (req,res) => {
 
 
 app.listen(process.env.PORT || 3001,()=>{console.log('port 3001 server listening');})
+
+// app.listen(3001,()=>{console.log('port 3001 server listening');})
